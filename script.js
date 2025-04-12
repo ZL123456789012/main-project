@@ -19,14 +19,17 @@ let operator = ['+', '-', '*', '/'];
 let t;
 
 function restart() {
+    console.log("restart was ran")
     score.innerHTML = "0";
     qNo.innerHTML = "0";
+    
     nextQuestion();
 
-    gameBox.style.display = "block"
+    gameBox.style.display ="initial" ; // "block"
     startBox.style.display = "none";
     endBox.style.display = "none";
     timer.style.display = "block";
+
 }
 
 function whenFinished() {
@@ -35,7 +38,9 @@ function whenFinished() {
     startBox.style.display = "none";
     endBox.style.display = "flex";
     lastmessage();
-}
+
+
+} 
 
 function nextQuestion() {
 
@@ -102,7 +107,7 @@ function getQNo() {
 }
 
 function getScore() {
-    score.innerHTML = parseInt(score.innerHTML) + 100;
+    score.innerHTML = parseInt(score.innerHTML) + 1;
     // console.log(score.innerHTML);
 }
 
@@ -146,16 +151,16 @@ function lastmessage() {
 
 function timed() {
     t = setInterval(() => {
-        progress.style.width = (parseInt(progress.style.width) - 1) + "%";
+        progress.style.width = (parseInt(progress.style.width)  ) - 1  + "%";
         console.log("called");
         if (parseInt(progress.style.width) == 0) {
             clearInterval(t);
             whenFinished()
         }
     }, 100)
-}
+} 
 
-buttons[0].addEventListener('click', () => {
+buttons[0].addEventListener('click', () =>{
     if (buttons[0].innerText == answer) {
         doWhenCorrect(0);
     } else {
